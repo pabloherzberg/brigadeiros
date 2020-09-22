@@ -8,9 +8,22 @@ export const Main = styled.div`
   header {
     flex: 1;
     background: ${colors.lightGreen};
+    div {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      p:last-child {
+        align-self: flex-end;
+        margin-right: 2em;
+      }
+    }
   }
   main {
-    flex: 6;
+    flex: 8;
     background: ${colors.lightPink};
     overflow-y: scroll;
     nav {
@@ -20,9 +33,10 @@ export const Main = styled.div`
         height: 100%;
         list-style: none;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
+        margin-top: 1em;
         flex-wrap: wrap;
-        gap: 2em;
+        gap: 1em;
         li {
           background: white;
           width: 40%;
@@ -31,7 +45,7 @@ export const Main = styled.div`
           flex-direction: column;
           border-radius: 4px;
           cursor: pointer;
-          box-shadow: 10px 10px 2px ${colors.darkGray};
+          box-shadow: 2px 2px 2px ${colors.darkGray};
           span {
             text-align: center;
           }
@@ -50,6 +64,8 @@ export const Main = styled.div`
           input {
             width: 100%;
             height: 20%;
+            border: none;
+            text-align: center;
           }
         }
       }
@@ -60,6 +76,7 @@ export const Main = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
     div {
       height: 90%;
       width: 90%;
@@ -68,10 +85,11 @@ export const Main = styled.div`
       align-items: center;
       background: ${colors.darkPink};
       border-radius: 4px;
+      gap: 1em;
       img {
         object-fit: contain;
-        height: 90%;
-        width: 30%;
+        max-height: 90%;
+        max-width: 20%;
       }
       span {
         color: white;

@@ -8,13 +8,13 @@ const useSendWhatsappMessage = () => {
     console.log(number, msg);
     console.log(isMobile);
 
-    const targetUrl = isMobile
+    /* const targetUrl = isMobile
       ? `whatsapp://send?text=${encodeURIComponent(msg)}`
       : `https://api.whatsapp.com/send?phone=${encodeURIComponent(
           number
-        )}&text=${encodeURIComponent(msg)}`;
+        )}&text=${encodeURIComponent(msg)}`; */
 
-    window.open(targetUrl);
+    window.open(`https://wa.me/${number}?text=${msg}`);
   };
 };
 
