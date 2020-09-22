@@ -5,13 +5,16 @@ import { Main } from "./style";
 import gift from "../../assets/svgs/gift.svg";
 import brownie from "../../assets/svgs/brownie.svg";
 import brigadeiro from "../../assets/svgs/brigadeiro.svg";
+import logo from "../../assets/pngs/logo.png";
 
 export default function Home() {
   const history = useHistory();
 
   return (
     <Main>
-      <header></header>
+      <header>
+        <img src={logo} alt="logo brigadeiro pelo mundo" />
+      </header>
       <main>
         <nav>
           <ul>
@@ -27,7 +30,7 @@ export default function Home() {
               }
             >
               <div>
-                <img src={gift} />
+                <img alt="icone" src={gift} />
               </div>
               <span> Presentes</span>
             </li>
@@ -43,7 +46,7 @@ export default function Home() {
               }
             >
               <div>
-                <img src={brigadeiro} />
+                <img alt="icone" src={brigadeiro} />
               </div>
               <span
                 style={{
@@ -67,7 +70,7 @@ export default function Home() {
               }
             >
               <div>
-                <img src={brownie} />
+                <img alt="icone" src={brownie} />
               </div>
               <span> Brownies</span>
             </li>

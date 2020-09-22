@@ -8,6 +8,13 @@ export const Main = styled.div`
   header {
     flex: 1;
     background: ${colors.lightGreen};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 40%;
+      object-fit: scale-down;
+    }
   }
   main {
     flex: 3;
