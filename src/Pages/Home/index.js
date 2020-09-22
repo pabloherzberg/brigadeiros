@@ -32,7 +32,7 @@ export default function Home() {
               <div>
                 <img alt="icone" src={gift} />
               </div>
-              <span> Presentes</span>
+              <span>Presentes</span>
             </li>
             <li
               style={{
@@ -50,11 +50,10 @@ export default function Home() {
               </div>
               <span
                 style={{
-                  textShadow: "1px 1px gray",
+                  color: colors.mediumPink,
                 }}
               >
-                {" "}
-                Brigadeiros
+                Kit Festa Brigadeiros
               </span>
             </li>
 
@@ -72,7 +71,7 @@ export default function Home() {
               <div>
                 <img alt="icone" src={brownie} />
               </div>
-              <span> Brownies</span>
+              <span>Kit Festa Brownies</span>
             </li>
           </ul>
         </nav>

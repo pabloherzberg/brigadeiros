@@ -38,15 +38,14 @@ export const Main = styled.div`
           cursor: pointer;
           box-shadow: 10px 10px 2px ${colors.darkGray};
           span {
-            font-size: 1.5em;
-            font-family: "Mystery Quest", cursive;
+            font-size: 1em;
+            font-family: "Nova Flat", cursive;
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             flex: 3;
             color: white;
-            font-weight: bold;
           }
           div {
             flex: 1;

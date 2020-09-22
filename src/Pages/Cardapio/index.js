@@ -10,6 +10,7 @@ import shoppingBag from "../../assets/svgs/shopping-bag.svg";
 import brigadeiroPng from "../../assets/pngs/brigadeiro.png";
 import browniePng from "../../assets/pngs/brownie.png";
 import presentesPng from "../../assets/pngs/presentes.png";
+import { colors } from "../../styles/colors";
 
 export default function Cardapio() {
   const { state } = useLocation();
@@ -121,16 +122,20 @@ export default function Cardapio() {
   }, [inputsCandys]);
 
   function sendWhatsapp() {
-    const msg = `
+    if (budget > 30) {
+      const msg = `
     Olá! 
     Gostaria de fazer uma encomenda no valor de R$${budget}.
     com as seguintes quantidades:
     ${Object.values(inputsCandys).map((candy) => {
       return candy.name + ": " + candy.value + " ";
-    })}`;
+    })}. Aguardo retorno :)`;
 
-    const number = 557193096528;
-    sendWhatsappMessage({ msg, number });
+      const number = 557191159027;
+      sendWhatsappMessage({ msg, number });
+    } else {
+      alert("Valor mínimo precisa ser R$30,00");
+    }
   }
 
   function handleChange(event) {
@@ -151,8 +156,11 @@ export default function Cardapio() {
     <Main>
       <header>
         <div>
-          <p> Informe a quantidade de cada</p>
-          <p>Total: R${budget}</p>
+          <p>E aí, qual o tamanho da sua vontade? =)</p>
+          <div>
+            <span>*Valor mínimo de R$30,00</span>
+            <span>Total: R${budget}</span>
+          </div>
         </div>
       </header>
       <main>
@@ -178,7 +186,12 @@ export default function Cardapio() {
         </nav>
       </main>
       <footer>
-        <div onClick={sendWhatsapp}>
+        <div
+          style={{
+            background: budget > 30 ? colors.darkPink : colors.lightPink,
+          }}
+          onClick={sendWhatsapp}
+        >
           <img src={shoppingBag} />
           <span>ENVIAR PEDIDO</span>
         </div>

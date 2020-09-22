@@ -15,10 +15,22 @@ export const Main = styled.div`
       flex-direction: column;
       justify-content: center;
       align-items: center;
-
-      p:last-child {
-        align-self: flex-end;
-        margin-right: 2em;
+      p {
+        font-size: 0.9em;
+      }
+      div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        span:first-child {
+          font-size: 0.7em;
+          margin-left: 2em;
+        }
+        span:last-child {
+          margin-right: 2em;
+          font-weight: bold;
+          font-size: 0.8em;
+        }
       }
     }
   }
