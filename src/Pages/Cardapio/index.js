@@ -3,109 +3,51 @@ import { useLocation } from "react-router-dom";
 
 //funções externas
 import useSendWhatsappMessage from "../../services/whatsapp";
+import firebase from "../../services/firebase";
 
 //estilos
 import { Main } from "./style";
 import shoppingBag from "../../assets/svgs/shopping-bag.svg";
-import brigadeiroPng from "../../assets/pngs/brigadeiro.png";
-import browniePng from "../../assets/pngs/brownie.png";
-import presentesPng from "../../assets/pngs/presentes.png";
 import { colors } from "../../styles/colors";
 
 export default function Cardapio() {
   const { state } = useLocation();
-  const [list, setList] = useState([]);
   const [inputsCandys, setInputsCandys] = useState([]);
   const [budget, setBudget] = useState(0);
-
-  const candys = [
-    {
-      name: "brigadeiro",
-      img: brigadeiroPng,
-      id: 0,
-      price: 0.1,
-    },
-    {
-      name: "brigadeiro",
-      img: brigadeiroPng,
-      id: 1,
-      price: 0.11,
-    },
-    {
-      name: "brigadeiro",
-      img: brigadeiroPng,
-      id: 2,
-      price: 0.12,
-    },
-    {
-      name: "brigadeiro",
-      img: brigadeiroPng,
-      id: 3,
-      price: 0.13,
-    },
-  ];
-
-  const candys2 = [
-    {
-      name: "brownie",
-      img: browniePng,
-      id: 0,
-      price: 0.1,
-    },
-    {
-      name: "brownie",
-      img: browniePng,
-      id: 1,
-      price: 0.11,
-    },
-    {
-      name: "brownie",
-      img: browniePng,
-      id: 2,
-      price: 0.12,
-    },
-    {
-      name: "brownie",
-      img: browniePng,
-      id: 3,
-      price: 0.13,
-    },
-  ];
-
-  const candys3 = [
-    {
-      name: "presentes",
-      img: presentesPng,
-      id: 0,
-      price: 0.1,
-    },
-    {
-      name: "presentes",
-      img: presentesPng,
-      id: 1,
-      price: 0.11,
-    },
-    {
-      name: "presentes",
-      img: presentesPng,
-      id: 2,
-      price: 0.12,
-    },
-    {
-      name: "presentes",
-      img: presentesPng,
-      id: 3,
-      price: 0.13,
-    },
-  ];
-
-  const sendWhatsappMessage = useSendWhatsappMessage();
+  const [candys, setCandys] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (state.type === "brigadeiro") setList(candys);
-    if (state.type === "brownie") setList(candys2);
-    if (state.type === "presentes") setList(candys3);
+    firebase
+      .database()
+      .ref(state.type)
+      .once("value")
+      .then(async (snapshot) => {
+        let newCandys = [];
+        const arrayOfCandys = snapshot.val();
+        for await (const [key, value] of Object.entries(arrayOfCandys)) {
+          const image = await firebase
+            .storage()
+            .ref(state.type)
+            .child(`/${key}`)
+            .getDownloadURL()
+            .then((url) => url)
+            .catch(() => "");
+
+          newCandys.push({
+            name: value.name,
+            price: value.value,
+            id: key,
+            img: image,
+          });
+        }
+
+        setCandys(newCandys);
+        setLoading(false);
+      });
   }, []);
+
+  const sendWhatsappMessage = useSendWhatsappMessage();
 
   useEffect(() => {
     console.log(inputsCandys);
@@ -159,31 +101,35 @@ export default function Cardapio() {
           <p>E aí, qual o tamanho da sua vontade? =)</p>
           <div>
             <span>*Valor mínimo de R$30,00</span>
-            <span>Total: R${budget}</span>
+            <span>Total: R$ {budget.toFixed(2)}</span>
           </div>
         </div>
       </header>
       <main>
-        <nav>
-          <ul>
-            {list.map((item, index) => (
-              <li key={index}>
-                <span>{item.name}</span>
-                <div>
-                  <img alt="selfie do doce =)" src={item.img} />
-                </div>
-                <input
-                  name={item.name}
-                  value={Number(inputsCandys[item.id]?.value) || 0}
-                  type="number"
-                  id={item.id}
-                  price={Number(item.price)}
-                  onChange={handleChange}
-                />
-              </li>
-            ))}
-          </ul>
-        </nav>
+        {loading ? (
+          <div>carregando...</div>
+        ) : (
+          <nav>
+            <ul>
+              {candys.map((item, index) => (
+                <li key={index}>
+                  <span>{item.name}</span>
+                  <div>
+                    <img alt="selfie do doce =)" src={item.img} />
+                  </div>
+                  <input
+                    name={item.name}
+                    value={Number(inputsCandys[item.id]?.value) || 0}
+                    type="number"
+                    id={item.id}
+                    price={Number(item.price)}
+                    onChange={handleChange}
+                  />
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
       </main>
       <footer>
         <div

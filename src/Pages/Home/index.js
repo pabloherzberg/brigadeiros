@@ -41,7 +41,7 @@ export default function Home() {
               onClick={() =>
                 history.push({
                   pathname: "/cardapio",
-                  state: { type: "brigadeiro" },
+                  state: { type: "brigadeiros" },
                 })
               }
             >
@@ -64,7 +64,7 @@ export default function Home() {
               onClick={() =>
                 history.push({
                   pathname: "/cardapio",
-                  state: { type: "brownie" },
+                  state: { type: "brownies" },
                 })
               }
             >
