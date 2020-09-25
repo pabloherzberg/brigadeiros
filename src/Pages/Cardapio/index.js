@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
+//components
+import Loading from "../../components/Loading";
+
 //funções externas
 import useSendWhatsappMessage from "../../services/whatsapp";
 import firebase from "../../services/firebase";
@@ -107,7 +110,7 @@ export default function Cardapio() {
       </header>
       <main>
         {loading ? (
-          <div>carregando...</div>
+          <Loading />
         ) : (
           <nav>
             <ul>

@@ -36,7 +36,7 @@ export const Main = styled.div`
           justify-content: flex-start;
           border-radius: 4px;
           cursor: pointer;
-          box-shadow: 10px 10px 2px ${colors.darkGray};
+          box-shadow: 5px 5px 0 ${colors.darkGray};
           span {
             font-size: 1em;
             font-family: "Nova Flat", cursive;

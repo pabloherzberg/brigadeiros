@@ -7,14 +7,15 @@ export const Main = styled.div`
   flex-direction: column;
   header {
     flex: 1;
-    background: ${colors.lightGreen};
+    background: ${colors.darkPink};
     div {
       height: 100%;
       width: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
+      align-items: flex-end;
+      color: ${colors.white};
       p {
         font-size: 0.9em;
       }
@@ -36,7 +37,11 @@ export const Main = styled.div`
   }
   main {
     flex: 8;
-    background: ${colors.lightPink};
+    background: linear-gradient(
+      to bottom right,
+      ${colors.lightPink},
+      ${colors.white}
+    );
     overflow-y: scroll;
     nav {
       height: 100%;
@@ -50,16 +55,17 @@ export const Main = styled.div`
         flex-wrap: wrap;
         gap: 1em;
         li {
-          background: white;
+          background: ${colors.white};
           width: 40%;
           height: 50%;
           display: flex;
           flex-direction: column;
           border-radius: 4px;
           cursor: pointer;
-          box-shadow: 2px 2px 2px ${colors.darkGray};
+          box-shadow: 2px 2px 0 ${colors.darkGray};
           span {
             text-align: center;
+            color: ${colors.darkGray};
           }
           div {
             width: 100%;
