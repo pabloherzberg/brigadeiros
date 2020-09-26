@@ -6,11 +6,11 @@ import brownieSVG from "../../assets/svgs/brownie.svg";
 import giftSVG from "../../assets/svgs/gift.svg";
 
 function Loading() {
-  const [text, setText] = useState([
+  const text = [
     "Chamando as delícias",
     "hoje elas estão vaidosas",
     "Parece que já estão prontas pra se apresentar pra você ;)",
-  ]);
+  ];
   const [count, setCount] = useState(0);
 
   setInterval(() => {

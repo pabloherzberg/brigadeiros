@@ -11,6 +11,7 @@ const firebaseConfig = {
   storageBucket: "brigadeiropelomundo-yasmin.appspot.com",
   messagingSenderId: "698043028603",
   appId: "1:698043028603:web:710c29dbb98538f4d57ede",
+  measurementId: "G-8P2S0DDP1L",
 };
 
 firebase.initializeApp(firebaseConfig);
