@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { colors } from "../../styles/colors";
 import { Main } from "./style";
@@ -6,9 +6,21 @@ import gift from "../../assets/svgs/gift.svg";
 import brownie from "../../assets/svgs/brownie.svg";
 import brigadeiro from "../../assets/svgs/brigadeiro.svg";
 import logo from "../../assets/pngs/logo.png";
+import firebase from "../../services/firebase";
 
 export default function Home() {
   const history = useHistory();
+  const messaging = firebase.messaging();
+
+  messaging
+    .requestPermission()
+    .then(() => messaging.getToken())
+    .then((token) => console.log(token))
+    .catch((error) => console.error(error));
+
+  messaging.onMessage((payload) => {
+    console.log(payload);
+  });
 
   return (
     <Main>
