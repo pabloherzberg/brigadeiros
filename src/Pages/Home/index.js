@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import { colors } from "../../styles/colors";
 import { Main } from "./style";
@@ -15,7 +15,9 @@ export default function Home() {
   messaging
     .requestPermission()
     .then(() => messaging.getToken())
-    .then((token) => console.log(token))
+    .then((token) => {
+      console.log(token);
+    })
     .catch((error) => console.error(error));
 
   messaging.onMessage((payload) => {
@@ -31,9 +33,6 @@ export default function Home() {
         <nav>
           <ul>
             <li
-              style={{
-                background: colors.darkPink,
-              }}
               onClick={() =>
                 history.push({
                   pathname: "/cardapio",
@@ -47,9 +46,6 @@ export default function Home() {
               <span>Presentes</span>
             </li>
             <li
-              style={{
-                background: colors.darkGreen,
-              }}
               onClick={() =>
                 history.push({
                   pathname: "/cardapio",
@@ -60,19 +56,10 @@ export default function Home() {
               <div>
                 <img alt="icone" src={brigadeiro} />
               </div>
-              <span
-                style={{
-                  color: colors.mediumPink,
-                }}
-              >
-                Kit Festa Brigadeiros
-              </span>
+              <span>Kit Festa Brigadeiros</span>
             </li>
 
             <li
-              style={{
-                background: colors.darkPink,
-              }}
               onClick={() =>
                 history.push({
                   pathname: "/cardapio",

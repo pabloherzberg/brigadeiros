@@ -13,24 +13,24 @@ export const Main = styled.div`
       width: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: flex-end;
+
+      align-items: center;
       color: ${colors.white};
       p {
-        font-size: 0.9em;
+        font-size: 0.7em;
       }
       div {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         span:first-child {
-          font-size: 0.7em;
+          font-size: 0.6em;
           margin-left: 2em;
         }
         span:last-child {
           margin-right: 2em;
           font-weight: bold;
-          font-size: 0.8em;
+          font-size: 0.65em;
         }
       }
     }
@@ -45,38 +45,48 @@ export const Main = styled.div`
     overflow-y: scroll;
     nav {
       height: 100%;
+      margin: 0;
 
+      margin-top: 0.8em;
       ul {
         height: 100%;
         list-style: none;
         display: flex;
         justify-content: center;
-        margin-top: 1em;
+        margin-top: 0em;
         flex-wrap: wrap;
         gap: 1em;
         li {
           background: ${colors.white};
-          width: 40%;
+          width: 90%;
           height: 50%;
           display: flex;
           flex-direction: column;
           border-radius: 4px;
+          position: relative;
           cursor: pointer;
-          box-shadow: 2px 2px 0 ${colors.darkGray};
+          box-shadow: 2px 2px 10px ${colors.darkGray};
+          overflow: hidden;
           span {
             text-align: center;
             color: ${colors.darkGray};
+            z-index: 1;
+            height: 10%;
           }
           div {
             width: 100%;
-            height: 100%;
+            height: 70%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            z-index: 1;
+
             img {
-              width: 80%;
-              object-fit: contain;
+              max-width: 80%;
+              max-height: 80%;
+              object-fit: scale-down;
+              border-radius: 8px;
             }
           }
           input {
@@ -84,6 +94,20 @@ export const Main = styled.div`
             height: 20%;
             border: none;
             text-align: center;
+            background: transparent;
+            z-index: 1;
+          }
+          #color {
+            position: absolute;
+            background: ${colors.lightBlue};
+            display: block;
+            content: "";
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            transform: rotate(-45deg) translate(-50%, -50%);
+            top: 25%;
+            left: 110%;
           }
         }
       }

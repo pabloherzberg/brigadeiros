@@ -19,6 +19,12 @@ export default function Cardapio() {
   const [budget, setBudget] = useState(0);
   const [candys, setCandys] = useState([]);
   const [loading, setLoading] = useState(true);
+  let minValue;
+  if (state.type === "presentes") {
+    minValue = 0;
+  } else {
+    minValue = 30;
+  }
 
   useEffect(() => {
     firebase
@@ -67,7 +73,7 @@ export default function Cardapio() {
   }, [inputsCandys]);
 
   function sendWhatsapp() {
-    if (budget > 30) {
+    if (budget > minValue) {
       const msg = `
     Olá! 
     Gostaria de fazer uma encomenda no valor de R$${budget}.
@@ -103,7 +109,13 @@ export default function Cardapio() {
         <div>
           <p>E aí, qual o tamanho da sua vontade? =)</p>
           <div>
-            <span>*Valor mínimo de R$30,00</span>
+            <span
+              style={{
+                opacity: state.type === "presentes" ? "0" : "1",
+              }}
+            >
+              *Valor mínimo de R$30,00
+            </span>
             <span>Total: R$ {budget.toFixed(2)}</span>
           </div>
         </div>
@@ -116,7 +128,10 @@ export default function Cardapio() {
             <ul>
               {candys.map((item, index) => (
                 <li key={index}>
-                  <span>{item.name}</span>
+                  <div id="color" />
+                  <span>
+                    {item.name} R$ {parseFloat(item.price).toFixed(2)}
+                  </span>
                   <div>
                     <img alt="selfie do doce =)" src={item.img} />
                   </div>
@@ -137,7 +152,7 @@ export default function Cardapio() {
       <footer>
         <div
           style={{
-            background: budget > 30 ? colors.darkPink : colors.lightPink,
+            background: budget > minValue ? colors.darkPink : colors.lightPink,
           }}
           onClick={sendWhatsapp}
         >

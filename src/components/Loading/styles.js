@@ -41,7 +41,7 @@ export const Container = styled.div`
         bottom: 0;
         left: 0;
         right: 0;
-        background-color: rgba(0, 0, 0, 0.01);
+        background-color: rgba(0, 0, 0, 0.0001);
         display: flex;
         justify-content: center;
         align-items: center;

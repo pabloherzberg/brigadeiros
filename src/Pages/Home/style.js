@@ -6,19 +6,28 @@ export const Main = styled.div`
   display: flex;
   flex-direction: column;
   header {
-    flex: 1;
-    background: ${colors.lightGreen};
+    height: 20%;
+    background: linear-gradient(
+      to right,
+      ${colors.mediumGreen},
+      ${colors.lightGreen}
+    );
     display: flex;
     justify-content: center;
     align-items: center;
     img {
       width: 40%;
+      max-height: 80%;
       object-fit: scale-down;
     }
   }
   main {
-    flex: 3;
-    background: ${colors.lightPink};
+    height: 80%;
+    background: linear-gradient(
+      135deg,
+      ${colors.lightPink},
+      ${colors.lightBlue}
+    );
     nav {
       height: 100%;
       ul {
@@ -36,16 +45,17 @@ export const Main = styled.div`
           justify-content: flex-start;
           border-radius: 4px;
           cursor: pointer;
-          box-shadow: 5px 5px 0 ${colors.darkGray};
+          color: ${colors.darkPink};
+          background: ${colors.darkGreen};
+          box-shadow: 5px 5px 10px ${colors.darkGray};
           span {
-            font-size: 1em;
+            font-size: 0.7em;
             font-family: "Nova Flat", cursive;
             width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             flex: 3;
-            color: white;
           }
           div {
             flex: 1;
