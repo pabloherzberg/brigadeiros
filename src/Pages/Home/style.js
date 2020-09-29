@@ -19,7 +19,7 @@ export const Main = styled.div`
       margin-left: auto;
       margin-right: auto;
 
-      width: 30%;
+      width: 100%;
       height: 100%;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
