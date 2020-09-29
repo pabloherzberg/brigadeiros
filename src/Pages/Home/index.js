@@ -1,7 +1,8 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { colors } from "../../styles/colors";
+
 import { Main } from "./style";
+import instagram from "../../assets/svgs/instagram.svg";
 import gift from "../../assets/svgs/gift.svg";
 import brownie from "../../assets/svgs/brownie.svg";
 import brigadeiro from "../../assets/svgs/brigadeiro.svg";
@@ -27,7 +28,16 @@ export default function Home() {
   return (
     <Main>
       <header>
-        <img src={logo} alt="logo brigadeiro pelo mundo" />
+        <div>
+          <img src={logo} alt="logo brigadeiro pelo mundo" />
+          <img
+            onClick={() =>
+              (window.location.href =
+                "https://instagram.com/brigadeiropelomundo?igshid=ytkg9scnd49o")
+            }
+            src={instagram}
+          />
+        </div>
       </header>
       <main>
         <nav>

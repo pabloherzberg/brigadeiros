@@ -15,18 +15,37 @@ export const Main = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    img {
-      width: 40%;
-      max-height: 80%;
-      object-fit: scale-down;
+    div {
+      margin-left: auto;
+      margin-right: auto;
+
+      width: 30%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      /* grid-template-rows: 1fr 1fr 1fr; */
+      place-items: center;
+      img {
+        grid-column: 2/3;
+        /* grid-row: 2/3; */
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: scale-down;
+        &:last-child {
+          grid-column: 3/4;
+          /*   grid-row: 2/3; */
+          margin-left: 10%;
+          max-width: 30%;
+        }
+      }
     }
   }
   main {
     height: 80%;
     background: linear-gradient(
       135deg,
-      ${colors.lightPink},
-      ${colors.lightBlue}
+      ${colors.mediumPink},
+      ${colors.lightPink}
     );
     nav {
       height: 100%;
@@ -46,10 +65,14 @@ export const Main = styled.div`
           border-radius: 4px;
           cursor: pointer;
           color: ${colors.darkPink};
-          background: ${colors.darkGreen};
-          box-shadow: 5px 5px 10px ${colors.darkGray};
+          background: linear-gradient(
+            to right,
+            ${colors.darkGreen},
+            ${colors.lightGreen}
+          );
+          box-shadow: 2px 2px 10px black;
           span {
-            font-size: 0.7em;
+            font-size: 0.9em;
             font-family: "Nova Flat", cursive;
             width: 100%;
             display: flex;
