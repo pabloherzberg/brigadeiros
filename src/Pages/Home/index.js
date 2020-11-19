@@ -1,12 +1,15 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
+import Snow from '../../components/Snow'
+
 import { Main } from "./style";
 import instagram from "../../assets/svgs/instagram.svg";
-import gift from "../../assets/svgs/gift.svg";
+import gift from "../../assets/svgs/love.svg";
 import brownie from "../../assets/svgs/brownie.svg";
 import brigadeiro from "../../assets/svgs/brigadeiro.svg";
-import logo from "../../assets/pngs/logo.png";
+import logo from "../../assets/pngs/natal.png";
+import lights from "../../assets/svgs/christmas-lights.svg";
 import firebase from "../../services/firebase";
 
 export default function Home() {
@@ -27,6 +30,7 @@ export default function Home() {
 
   return (
     <Main>
+      <Snow/>
       <header>
         <div>
           <img src={logo} alt="logo brigadeiro pelo mundo" />
@@ -40,6 +44,17 @@ export default function Home() {
         </div>
       </header>
       <main>
+        <img className='lights' src={lights} />
+        <img className='lights' src={lights} />
+        <img className='lights' src={lights} />
+        <img className='lights' src={lights} />
+        <img className='lights' src={lights} />
+        <img className='lights' src={lights} />
+        <img className='lights' src={lights} />
+        <img className='lights' src={lights} />
+        <img className='lights' src={lights} />
+        <img className='lights' src={lights} />
+ 
         <nav>
           <ul>
             <li
@@ -53,7 +68,7 @@ export default function Home() {
               <div>
                 <img alt="icone" src={gift} />
               </div>
-              <span>Presentes</span>
+              <span>Panetones Trufados</span>
             </li>
             <li
               onClick={() =>
