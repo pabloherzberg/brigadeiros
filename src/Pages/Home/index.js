@@ -54,6 +54,7 @@ export default function Home() {
         <img className='lights' src={lights} />
         <img className='lights' src={lights} />
         <img className='lights' src={lights} />
+        
  
         <nav>
           <ul>
@@ -61,14 +62,27 @@ export default function Home() {
               onClick={() =>
                 history.push({
                   pathname: "/cardapio",
-                  state: { type: "presentes" },
+                  state: { type: "brownietone" },
                 })
               }
             >
               <div>
                 <img alt="icone" src={gift} />
               </div>
-              <span>Panetones Trufados</span>
+              <span>Brownietone</span>
+            </li>
+            <li
+              onClick={() =>
+                history.push({
+                  pathname: "/cardapio",
+                  state: { type: "panetone" },
+                })
+              }
+            >
+              <div>
+                <img alt="icone" src={gift} />
+              </div>
+              <span>Panetone Recheado</span>
             </li>
             <li
               onClick={() =>
