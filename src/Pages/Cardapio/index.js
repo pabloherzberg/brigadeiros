@@ -23,7 +23,7 @@ export default function Cardapio() {
   if (state.type === "presentes") {
     minValue = 0;
   } else {
-    minValue = 30;
+    minValue = 0;
   }
 
   useEffect(() => {
@@ -114,7 +114,7 @@ export default function Cardapio() {
                 opacity: state.type === "presentes" ? "0" : "1",
               }}
             >
-              *Valor mínimo de R$30,00
+         {/*      *Valor mínimo de R$30,00 */}
             </span>
             <span>Total: R$ {budget.toFixed(2)}</span>
           </div>
