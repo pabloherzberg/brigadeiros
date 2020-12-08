@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import Loading from "../../components/Loading";
 
 //funções externas
-import useSendWhatsappMessage from "../../services/whatsapp";
+import {} from "../../services/whatsapp";
 import firebase from "../../services/firebase";
 
 //estilos
@@ -56,8 +56,6 @@ export default function Cardapio() {
       });
   }, []);
 
-  const sendWhatsappMessage = useSendWhatsappMessage();
-
   useEffect(() => {
     console.log(inputsCandys);
     if (Object.keys(inputsCandys).length > 0) {
@@ -74,16 +72,31 @@ export default function Cardapio() {
 
   function sendWhatsapp() {
     if (budget > minValue) {
-      const msg = `
-    Olá! 
-    Gostaria de fazer uma encomenda no valor de R$${budget}.
-    com as seguintes quantidades:
-    ${Object.values(inputsCandys).map((candy) => {
-      return candy.name + ": " + candy.value + " ";
-    })}. Aguardo retorno :)`;
+      const msg = `Olá!%0aGostaria de fazer uma encomenda no valor de R$${budget.toFixed(2)}. Com as seguintes quantidades:%0a`
+      let list = []
+      Object.values(inputsCandys).map((candy) => {
+        return  list.push(candy.value + " " + candy.name);
+      })
+      list = list.splice(',').join('%0a')
+
+      let formatedMsg = msg + list
+
+    console.log(formatedMsg)
 
       const number = 557191159027;
-      sendWhatsappMessage({ msg, number });
+      const isMobile =
+      navigator.userAgent.match(/Android/i) ||
+      navigator.userAgent.match(/webOS/i) ||
+      navigator.userAgent.match(/iPhone/i);
+  
+    
+      
+  
+      const targetUrl = isMobile
+        ? `whatsapp://send?text=${encodeURIComponent(formatedMsg)}`
+        : `https://wa.me/${number}?text=${formatedMsg}`;
+  
+      window.open(targetUrl);
     } else {
       alert("Valor mínimo precisa ser R$30,00");
     }
