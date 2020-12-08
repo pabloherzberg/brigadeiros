@@ -35,6 +35,7 @@ export default function Home() {
         <div>
           <img src={logo} alt="logo brigadeiro pelo mundo" />
           <img
+            style={{zIndex:15000000}}
             onClick={() =>
               (window.location.href =
                 "https://instagram.com/brigadeiropelomundo?igshid=ytkg9scnd49o")

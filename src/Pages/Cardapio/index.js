@@ -114,7 +114,7 @@ export default function Cardapio() {
                 opacity: state.type === "presentes" ? "0" : "1",
               }}
             >
-         {/*      *Valor mínimo de R$30,00 */}
+             {state.type === "brigadeiros" || state.type === "brownies" && "*Quantidade mínima por sabor: 10 unidades"}
             </span>
             <span>Total: R$ {budget.toFixed(2)}</span>
           </div>
