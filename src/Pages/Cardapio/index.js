@@ -96,7 +96,7 @@ export default function Cardapio() {
         ? `whatsapp://send?text=${encodeURIComponent(formatedMsg)}`
         : `https://wa.me/${number}?text=${formatedMsg}`;
   
-      window.open(targetUrl);
+      window.open(`https://wa.me/${number}?text=${formatedMsg}`);
     } else {
       alert("Valor mínimo precisa ser R$30,00");
     }
