@@ -6,7 +6,7 @@ export const Main = styled.div`
   background-image:linear-gradient(to bottom, ${colors.lightBlue}, ${colors.lightGreen});
 
   #list{   
-    overflow-y:scroll;
+    margin-top:5vh;
     display: flex;
     flex-direction: column;
     align-items:center;

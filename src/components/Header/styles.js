@@ -5,7 +5,7 @@ export const Container = styled.div`
     height:30vh;
     display:grid;
     grid-template-columns:1fr 80% 1fr;
-    grid-template-rows: 20vh 10vh;
+    grid-template-rows: 25vh 5vh;
     img{
         object-fit:contain;
         max-height:100%;
